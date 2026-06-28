@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SiYoutube, SiDiscord, SiSpotify, SiApplemusic, SiFacebook, SiInstagram } from 'react-icons/si'
 
 const LINKS = [
   { href: '/about', label: 'About' },
@@ -8,12 +9,15 @@ const LINKS = [
   { href: '/join', label: 'Join' },
 ]
 
-// TODO: replace # with real social links when available
+// TODO: replace href: '#' with real profile/channel URLs as they become available.
+// Icons are wired up and ready — only the links themselves are placeholder.
 const SOCIALS = [
-  { label: 'IG', href: '#' },
-  { label: 'YT', href: '#' },
-  { label: 'FB', href: '#' },
-  { label: 'TW', href: '#' },
+  { label: 'YouTube', href: '#', Icon: SiYoutube },
+  { label: 'Discord', href: '#', Icon: SiDiscord },
+  { label: 'Spotify', href: '#', Icon: SiSpotify },
+  { label: 'Apple Music', href: '#', Icon: SiApplemusic },
+  { label: 'Facebook', href: '#', Icon: SiFacebook },
+  { label: 'Instagram', href: '#', Icon: SiInstagram },
 ]
 
 export default function Footer() {
@@ -35,10 +39,15 @@ export default function Footer() {
             ))}
           </ul>
           <ul className="flex gap-4">
-            {SOCIALS.map((s) => (
-              <li key={s.label}>
-                <a href={s.href} aria-label={s.label} className="text-[12px] text-text-dim hover:text-gold transition-colors">
-                  {s.label}
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  aria-label={label}
+                  title={label}
+                  className="w-8 h-8 flex items-center justify-center rounded-full border border-border text-text-dim hover:text-gold hover:border-gold-dim transition-colors"
+                >
+                  <Icon size={14} />
                 </a>
               </li>
             ))}
