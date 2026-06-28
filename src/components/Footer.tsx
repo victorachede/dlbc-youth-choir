@@ -1,5 +1,13 @@
 import Link from 'next/link'
-import { SiYoutube, SiDiscord, SiSpotify, SiApplemusic, SiFacebook, SiInstagram } from 'react-icons/si'
+import { HugeiconsIcon } from '@hugeicons/react'
+import {
+  YoutubeIcon,
+  DiscordIcon,
+  SpotifyIcon,
+  AppleMusicIcon,
+  Facebook01Icon,
+  InstagramIcon,
+} from '@hugeicons/core-free-icons'
 
 const LINKS = [
   { href: '/about', label: 'About' },
@@ -12,12 +20,12 @@ const LINKS = [
 // TODO: replace href: '#' with real profile/channel URLs as they become available.
 // Icons are wired up and ready — only the links themselves are placeholder.
 const SOCIALS = [
-  { label: 'YouTube', href: '#', Icon: SiYoutube },
-  { label: 'Discord', href: '#', Icon: SiDiscord },
-  { label: 'Spotify', href: '#', Icon: SiSpotify },
-  { label: 'Apple Music', href: '#', Icon: SiApplemusic },
-  { label: 'Facebook', href: '#', Icon: SiFacebook },
-  { label: 'Instagram', href: '#', Icon: SiInstagram },
+  { label: 'YouTube', href: '#', icon: YoutubeIcon },
+  { label: 'Discord', href: '#', icon: DiscordIcon },
+  { label: 'Spotify', href: '#', icon: SpotifyIcon },
+  { label: 'Apple Music', href: '#', icon: AppleMusicIcon },
+  { label: 'Facebook', href: '#', icon: Facebook01Icon },
+  { label: 'Instagram', href: '#', icon: InstagramIcon },
 ]
 
 export default function Footer() {
@@ -39,7 +47,7 @@ export default function Footer() {
             ))}
           </ul>
           <ul className="flex gap-4">
-            {SOCIALS.map(({ label, href, Icon }) => (
+            {SOCIALS.map(({ label, href, icon }) => (
               <li key={label}>
                 <a
                   href={href}
@@ -47,7 +55,7 @@ export default function Footer() {
                   title={label}
                   className="w-8 h-8 flex items-center justify-center rounded-full border border-border text-text-dim hover:text-gold hover:border-gold-dim transition-colors"
                 >
-                  <Icon size={14} />
+                  <HugeiconsIcon icon={icon} size={15} strokeWidth={1.5} color="currentColor" />
                 </a>
               </li>
             ))}
