@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  /* Color tokens — carried over from the original DLBC Youth Choir site */
+  --color-dark: #080807;
+  --color-dark-2: #0d0c09;
+  --color-dark-3: #111009;
+  --color-gold: #C9A84C;
+  --color-gold-dim: rgba(201, 168, 76, 0.15);
+  --color-gold-faint: rgba(201, 168, 76, 0.07);
+  --color-text: #e8e2d6;
+  --color-text-muted: #8a7d6a;
+  --color-text-dim: #5e5448;
+  --color-border: rgba(201, 168, 76, 0.1);
+
+  --font-display: var(--font-cinzel);
+  --font-accent: var(--font-cormorant);
+  --font-body: var(--font-dm-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-dark);
+  color: var(--color-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+@theme inline {
+  --color-dark: var(--color-dark);
+  --color-dark-2: var(--color-dark-2);
+  --color-dark-3: var(--color-dark-3);
+  --color-gold: var(--color-gold);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-dim: var(--color-text-dim);
+  --color-border: var(--color-border);
+}
