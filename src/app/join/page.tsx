@@ -30,11 +30,11 @@ export default function JoinPage() {
         <main className="flex-1 flex items-center justify-center px-6 pt-24">
           <Reveal>
             <div className="text-center max-w-md">
-              <div className="w-14 h-14 rounded-full border border-gold/40 flex items-center justify-center mx-auto mb-6">
-                <Check size={22} className="text-gold" />
+              <div className="w-14 h-14 rounded-full border border-blue/40 flex items-center justify-center mx-auto mb-6">
+                <Check size={22} className="text-blue" />
               </div>
-              <h1 className="font-display text-2xl text-text mb-3">Application Received</h1>
-              <p className="text-text-muted text-[15px] leading-relaxed">
+              <h1 className="font-display text-2xl text-ink mb-3">Application Received</h1>
+              <p className="text-ink-muted text-[15px] leading-relaxed">
                 Thank you, {form.name.split(' ')[0] || 'friend'}. Someone from the choir leadership team will
                 reach out to you soon. We&apos;re excited to welcome you in.
               </p>
@@ -53,15 +53,15 @@ export default function JoinPage() {
         <div className="max-w-xl mx-auto px-6 sm:px-10 pb-24">
 
           <Reveal>
-            <p className="font-display text-[11px] tracking-[0.25em] uppercase text-gold mb-4 text-center">Be Part of It</p>
+            <p className="font-display text-[11px] tracking-[0.25em] uppercase text-blue mb-4 text-center">Be Part of It</p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-display font-semibold text-3xl sm:text-4xl text-text mb-4 text-center">
+            <h1 className="font-display font-semibold text-3xl sm:text-4xl text-ink mb-4 text-center">
               Join the Choir
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-text-muted text-[15px] leading-relaxed text-center mb-14">
+            <p className="text-ink-muted text-[15px] leading-relaxed text-center mb-14">
               We welcome every voice — trained or untrained. What matters is a heart for worship.
             </p>
           </Reveal>
@@ -69,44 +69,44 @@ export default function JoinPage() {
           <Reveal delay={0.15}>
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div>
-                <label className="block text-[12px] tracking-wide text-text-muted mb-2">Full Name</label>
+                <label className="block text-[12px] tracking-wide text-ink-muted mb-2">Full Name</label>
                 <input
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full bg-dark-2 border border-border rounded-sm px-4 py-3 text-[14px] text-text outline-none focus:border-gold transition-colors"
+                  className="w-full bg-surface border border-border rounded-sm px-4 py-3 text-[14px] text-ink outline-none focus:border-blue transition-colors"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-[12px] tracking-wide text-text-muted mb-2">Phone Number</label>
+                  <label className="block text-[12px] tracking-wide text-ink-muted mb-2">Phone Number</label>
                   <input
                     required
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full bg-dark-2 border border-border rounded-sm px-4 py-3 text-[14px] text-text outline-none focus:border-gold transition-colors"
+                    className="w-full bg-surface border border-border rounded-sm px-4 py-3 text-[14px] text-ink outline-none focus:border-blue transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-[12px] tracking-wide text-text-muted mb-2">Email (optional)</label>
+                  <label className="block text-[12px] tracking-wide text-ink-muted mb-2">Email (optional)</label>
                   <input
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-dark-2 border border-border rounded-sm px-4 py-3 text-[14px] text-text outline-none focus:border-gold transition-colors"
+                    className="w-full bg-surface border border-border rounded-sm px-4 py-3 text-[14px] text-ink outline-none focus:border-blue transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[12px] tracking-wide text-text-muted mb-2">Voice Part</label>
+                <label className="block text-[12px] tracking-wide text-ink-muted mb-2">Voice Part</label>
                 <select
                   required
                   value={form.voicePart}
                   onChange={(e) => setForm({ ...form, voicePart: e.target.value })}
-                  className="w-full bg-dark-2 border border-border rounded-sm px-4 py-3 text-[14px] text-text outline-none focus:border-gold transition-colors"
+                  className="w-full bg-surface border border-border rounded-sm px-4 py-3 text-[14px] text-ink outline-none focus:border-blue transition-colors"
                 >
                   <option value="" disabled>Select one</option>
                   {VOICE_PARTS.map((v) => (
@@ -116,29 +116,29 @@ export default function JoinPage() {
               </div>
 
               <div>
-                <label className="block text-[12px] tracking-wide text-text-muted mb-2">Musical Experience (optional)</label>
+                <label className="block text-[12px] tracking-wide text-ink-muted mb-2">Musical Experience (optional)</label>
                 <input
                   value={form.experience}
                   onChange={(e) => setForm({ ...form, experience: e.target.value })}
                   placeholder="e.g. sang in school choir, no formal training, plays piano"
-                  className="w-full bg-dark-2 border border-border rounded-sm px-4 py-3 text-[14px] text-text outline-none focus:border-gold transition-colors placeholder:text-text-dim"
+                  className="w-full bg-surface border border-border rounded-sm px-4 py-3 text-[14px] text-ink outline-none focus:border-blue transition-colors placeholder:text-ink-dim"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] tracking-wide text-text-muted mb-2">Why do you want to join? (optional)</label>
+                <label className="block text-[12px] tracking-wide text-ink-muted mb-2">Why do you want to join? (optional)</label>
                 <textarea
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-dark-2 border border-border rounded-sm px-4 py-3 text-[14px] text-text outline-none focus:border-gold transition-colors resize-none"
+                  className="w-full bg-surface border border-border rounded-sm px-4 py-3 text-[14px] text-ink outline-none focus:border-blue transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="mt-2 bg-gold text-dark text-[13px] tracking-wide font-medium px-6 py-3.5 rounded-sm hover:bg-gold/90 transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+                className="mt-2 bg-blue text-white text-[13px] tracking-wide font-medium px-6 py-3.5 rounded-sm hover:bg-blue/90 transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
               >
                 {submitting ? (
                   <>

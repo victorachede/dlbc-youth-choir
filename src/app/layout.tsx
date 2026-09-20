@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
-import { Cinzel, Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Fraunces, Instrument_Serif, Manrope } from "next/font/google";
 import "./globals.css";
 
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
-  weight: ["300", "400", "600"],
+  weight: ["400"],
   style: ["normal", "italic"],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${dmSans.variable} h-full`}
+      className={`${fraunces.variable} ${instrumentSerif.variable} ${manrope.variable} h-full`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">{children}</body>
     </html>

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { HugeiconsIcon } from '@hugeicons/react'
 import {
@@ -33,14 +34,17 @@ export default function Footer() {
     <footer className="border-t border-border mt-auto">
       <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8 pb-8">
-          <div>
-            <p className="font-display text-[15px] text-text mb-1">DLBC Youth Choir</p>
-            <p className="text-[13px] text-text-dim">Makurdi, Benue State, Nigeria</p>
+          <div className="flex items-center gap-3">
+            <Image src="/dlbc-logo.png" alt="Deeper Life Youth Choir Makurdi" width={32} height={32} className="h-8 w-8 object-contain" />
+            <div>
+              <p className="font-display text-[15px] text-ink mb-1">DLBC Youth Choir</p>
+              <p className="text-[13px] text-ink-dim">Makurdi, Benue State, Nigeria</p>
+            </div>
           </div>
           <ul className="flex gap-6">
             {LINKS.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-[13px] text-text-muted hover:text-gold transition-colors">
+                <Link href={l.href} className="text-[13px] text-ink-muted hover:text-blue transition-colors">
                   {l.label}
                 </Link>
               </li>
@@ -53,7 +57,7 @@ export default function Footer() {
                   href={href}
                   aria-label={label}
                   title={label}
-                  className="w-8 h-8 flex items-center justify-center rounded-full border border-border text-text-dim hover:text-gold hover:border-gold-dim transition-colors"
+                  className="w-8 h-8 flex items-center justify-center rounded-full border border-border text-ink-dim hover:text-blue hover:border-blue-dim transition-colors"
                 >
                   <HugeiconsIcon icon={icon} size={15} strokeWidth={1.5} color="currentColor" />
                 </a>
@@ -61,9 +65,9 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="border-t border-border pt-6 flex flex-col sm:flex-row justify-between gap-2 text-[12px] text-text-dim">
+        <div className="border-t border-border pt-6 flex flex-col sm:flex-row justify-between gap-2 text-[12px] text-ink-dim">
           <p>&copy; {new Date().getFullYear()} DLBC Makurdi Youth Choir. All rights reserved.</p>
-          <p>Built by <span className="text-text-muted">Black Sheep Co.</span></p>
+          <p>Built by <span className="text-ink-muted">Black Sheep Co.</span></p>
         </div>
       </div>
     </footer>

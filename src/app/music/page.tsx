@@ -26,15 +26,15 @@ export default function MusicPage() {
         <div className="max-w-5xl mx-auto px-6 sm:px-10 pb-24">
 
           <Reveal>
-            <p className="font-display text-[11px] tracking-[0.25em] uppercase text-gold mb-4 text-center">Our Sound</p>
+            <p className="font-display text-[11px] tracking-[0.25em] uppercase text-blue mb-4 text-center">Our Sound</p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-text mb-4 text-center">
+            <h1 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-ink mb-4 text-center">
               Music
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-text-muted text-[15px] leading-relaxed text-center max-w-md mx-auto mb-16">
+            <p className="text-ink-muted text-[15px] leading-relaxed text-center max-w-md mx-auto mb-16">
               Worship recorded live, the way it was sung — unedited hearts in the room with us.
             </p>
           </Reveal>
@@ -44,27 +44,27 @@ export default function MusicPage() {
               <Reveal key={track.title} delay={i * 0.04}>
                 <button
                   onClick={() => setPlaying(playing === i ? null : i)}
-                  className="w-full flex items-center gap-5 border border-border rounded-sm px-5 sm:px-7 py-5 hover:border-gold-dim transition-colors text-left group"
+                  className="w-full flex items-center gap-5 border border-border rounded-sm px-5 sm:px-7 py-5 hover:border-blue-dim transition-colors text-left group"
                 >
-                  <div className="w-11 h-11 rounded-full border border-gold/40 flex items-center justify-center shrink-0 group-hover:bg-gold-faint transition-colors">
+                  <div className="w-11 h-11 rounded-full border border-blue/40 flex items-center justify-center shrink-0 group-hover:bg-blue-faint transition-colors">
                     {playing === i ? (
-                      <Pause size={14} className="text-gold" fill="currentColor" />
+                      <Pause size={14} className="text-blue" fill="currentColor" />
                     ) : (
-                      <Play size={14} className="text-gold" fill="currentColor" />
+                      <Play size={14} className="text-blue" fill="currentColor" />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-display text-[15px] text-text truncate">{track.title}</h3>
-                    <p className="text-[12px] text-text-dim">{track.meta}</p>
+                    <h3 className="font-display text-[15px] text-ink truncate">{track.title}</h3>
+                    <p className="text-[12px] text-ink-dim">{track.meta}</p>
                   </div>
-                  <span className="font-display text-[12px] text-text-dim shrink-0">{track.duration}</span>
+                  <span className="font-display text-[12px] text-ink-dim shrink-0">{track.duration}</span>
                 </button>
               </Reveal>
             ))}
           </div>
 
           <Reveal delay={0.2}>
-            <p className="text-center text-[12px] text-text-dim mt-10">
+            <p className="text-center text-[12px] text-ink-dim mt-10">
               More recordings added after every major service — check back soon.
             </p>
           </Reveal>

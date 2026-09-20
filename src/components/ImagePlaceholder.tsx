@@ -16,18 +16,18 @@ export default function ImagePlaceholder({
 }) {
   return (
     <div
-      className={`relative flex flex-col items-center justify-center gap-2 bg-dark-3 border border-gold-dim overflow-hidden ${className}`}
+      className={`relative flex flex-col items-center justify-center gap-2 bg-surface-2 border border-blue-dim overflow-hidden ${className}`}
       style={aspect ? { aspectRatio: aspect } : undefined}
     >
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.05) 0%, transparent 70%)',
+            'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(57,87,128,0.05) 0%, transparent 70%)',
         }}
       />
-      <span className="relative z-10 text-2xl text-gold/20">♪</span>
-      <span className="relative z-10 font-display text-[10px] tracking-[0.3em] uppercase text-gold/40">
+      <span className="relative z-10 text-2xl text-blue/20">♪</span>
+      <span className="relative z-10 font-display text-[10px] tracking-[0.3em] uppercase text-blue/40">
         {label}
       </span>
     </div>

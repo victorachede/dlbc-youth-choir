@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  /* Color tokens — carried over from the original DLBC Youth Choir site */
-  --color-dark: #080807;
-  --color-dark-2: #0d0c09;
-  --color-dark-3: #111009;
-  --color-gold: #C9A84C;
-  --color-gold-dim: rgba(201, 168, 76, 0.15);
-  --color-gold-faint: rgba(201, 168, 76, 0.07);
-  --color-text: #e8e2d6;
-  --color-text-muted: #8a7d6a;
-  --color-text-dim: #5e5448;
-  --color-border: rgba(201, 168, 76, 0.1);
-
-  --font-display: var(--font-cinzel);
-  --font-accent: var(--font-cormorant);
-  --font-body: var(--font-dm-sans);
+  /* Color tokens — white theme built around DLBC's real brand colors,
+     sampled directly from the church's logo (blue #395780, red #e8393f)
+     instead of the invented gold/dark palette the site launched with. */
+  --color-white: #ffffff;
+  --color-surface: #f7f5f2;
+  --color-surface-2: #efece6;
+  --color-blue: #395780;
+  --color-blue-dim: rgba(57, 87, 128, 0.14);
+  --color-blue-faint: rgba(57, 87, 128, 0.06);
+  --color-red: #e8393f;
+  --color-ink: #1c2430;
+  --color-ink-muted: #5b6472;
+  --color-ink-dim: #8a91a0;
+  --color-border: rgba(28, 36, 48, 0.1);
 }
 
 html {
@@ -23,20 +22,39 @@ html {
 }
 
 body {
-  background: var(--color-dark);
-  color: var(--color-text);
+  background: var(--color-white);
+  color: var(--color-ink);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
 }
 
 @theme inline {
-  --color-dark: var(--color-dark);
-  --color-dark-2: var(--color-dark-2);
-  --color-dark-3: var(--color-dark-3);
-  --color-gold: var(--color-gold);
-  --color-text: var(--color-text);
-  --color-text-muted: var(--color-text-muted);
-  --color-text-dim: var(--color-text-dim);
+  --color-white: var(--color-white);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-blue: var(--color-blue);
+  --color-blue-dim: var(--color-blue-dim);
+  --color-blue-faint: var(--color-blue-faint);
+  --color-red: var(--color-red);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-dim: var(--color-ink-dim);
   --color-border: var(--color-border);
+
+  /* These live in @theme inline (not plain :root) specifically so Tailwind
+     actually generates font-display / font-accent / font-body utilities —
+     the previous version declared them in :root, which Tailwind v4 never
+     scans for theme tokens, so those classes were silently no-ops and every
+     heading was rendering in the browser's default serif/sans fallback. */
+  --font-display: var(--font-fraunces);
+  --font-accent: var(--font-instrument-serif);
+  --font-body: var(--font-manrope);
+}
+
+/* Slow, subtle drift used by HeroMedia's photo-slideshow slides — never
+   applied when the visitor has reduced motion enabled. */
+@keyframes heroKenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
 }

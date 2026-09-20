@@ -26,15 +26,15 @@ export default function GalleryPage() {
         <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-24">
 
           <Reveal>
-            <p className="font-display text-[11px] tracking-[0.25em] uppercase text-gold mb-4 text-center">Moments</p>
+            <p className="font-display text-[11px] tracking-[0.25em] uppercase text-blue mb-4 text-center">Moments</p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-text mb-4 text-center">
+            <h1 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-ink mb-4 text-center">
               Gallery
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-text-muted text-[15px] leading-relaxed text-center max-w-md mx-auto mb-16">
+            <p className="text-ink-muted text-[15px] leading-relaxed text-center max-w-md mx-auto mb-16">
               Glimpses of worship, fellowship, and life together as a choir family.
             </p>
           </Reveal>
