@@ -8,6 +8,7 @@ export default function PhotoTile({
   className = '',
   priority,
   sizes = '(min-width: 1024px) 33vw, 50vw',
+  onClick,
 }: {
   src: string
   alt: string
@@ -16,10 +17,15 @@ export default function PhotoTile({
   className?: string
   priority?: boolean
   sizes?: string
+  onClick?: () => void
 }) {
   return (
     <div
-      className={`relative overflow-hidden bg-surface-2 ${className}`}
+      onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } } : undefined}
+      className={`relative overflow-hidden bg-surface-2 ${onClick ? 'cursor-zoom-in group' : ''} ${className}`}
       style={aspect ? { aspectRatio: aspect } : undefined}
     >
       <Image
@@ -27,7 +33,7 @@ export default function PhotoTile({
         alt={alt}
         fill
         sizes={sizes}
-        className="object-cover"
+        className={`object-cover ${onClick ? 'transition-transform duration-500 group-hover:scale-105' : ''}`}
         priority={priority}
       />
       {caption && (

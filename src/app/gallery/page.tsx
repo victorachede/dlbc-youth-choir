@@ -1,7 +1,11 @@
+'use client'
+
+import { useState } from 'react'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
 import PhotoTile from '@/components/PhotoTile'
+import Lightbox from '@/components/Lightbox'
 
 const HERO_PHOTOS = [
   { src: '/photos/string-orchestra.jpg', caption: 'Strings — Combine Service' },
@@ -26,7 +30,13 @@ const PHOTOS = [
   { src: '/photos/choir-lineup-boys.jpg', caption: 'Standing in Order', aspect: '3/2' },
 ]
 
+// One shared list so the lightbox can step through every photo on the page,
+// hero mosaic included, regardless of which grid it was clicked from.
+const ALL_PHOTOS = [...HERO_PHOTOS, ...PHOTOS]
+
 export default function GalleryPage() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
   return (
     <>
       <Nav />
@@ -45,19 +55,20 @@ export default function GalleryPage() {
                   className="rounded-sm h-full"
                   sizes="50vw"
                   priority
+                  onClick={() => setOpenIndex(0)}
                 />
               </Reveal>
               <Reveal delay={0.05} className="col-span-1 row-span-1">
-                <PhotoTile src={HERO_PHOTOS[1].src} alt={HERO_PHOTOS[1].caption} caption={HERO_PHOTOS[1].caption} className="rounded-sm h-full" sizes="25vw" priority />
+                <PhotoTile src={HERO_PHOTOS[1].src} alt={HERO_PHOTOS[1].caption} caption={HERO_PHOTOS[1].caption} className="rounded-sm h-full" sizes="25vw" priority onClick={() => setOpenIndex(1)} />
               </Reveal>
               <Reveal delay={0.1} className="col-span-1 row-span-1">
-                <PhotoTile src={HERO_PHOTOS[2].src} alt={HERO_PHOTOS[2].caption} caption={HERO_PHOTOS[2].caption} className="rounded-sm h-full" sizes="25vw" priority />
+                <PhotoTile src={HERO_PHOTOS[2].src} alt={HERO_PHOTOS[2].caption} caption={HERO_PHOTOS[2].caption} className="rounded-sm h-full" sizes="25vw" priority onClick={() => setOpenIndex(2)} />
               </Reveal>
               <Reveal delay={0.15} className="col-span-1 row-span-1">
-                <PhotoTile src={HERO_PHOTOS[3].src} alt={HERO_PHOTOS[3].caption} caption={HERO_PHOTOS[3].caption} className="rounded-sm h-full" sizes="25vw" />
+                <PhotoTile src={HERO_PHOTOS[3].src} alt={HERO_PHOTOS[3].caption} caption={HERO_PHOTOS[3].caption} className="rounded-sm h-full" sizes="25vw" onClick={() => setOpenIndex(3)} />
               </Reveal>
               <Reveal delay={0.2} className="col-span-1 row-span-1">
-                <PhotoTile src={HERO_PHOTOS[4].src} alt={HERO_PHOTOS[4].caption} caption={HERO_PHOTOS[4].caption} className="rounded-sm h-full" sizes="25vw" />
+                <PhotoTile src={HERO_PHOTOS[4].src} alt={HERO_PHOTOS[4].caption} caption={HERO_PHOTOS[4].caption} className="rounded-sm h-full" sizes="25vw" onClick={() => setOpenIndex(4)} />
               </Reveal>
             </div>
 
@@ -86,6 +97,7 @@ export default function GalleryPage() {
                   caption={photo.caption}
                   aspect={photo.aspect}
                   className="rounded-sm"
+                  onClick={() => setOpenIndex(HERO_PHOTOS.length + i)}
                 />
               </Reveal>
             ))}
@@ -94,6 +106,13 @@ export default function GalleryPage() {
         </div>
       </main>
       <Footer />
+
+      <Lightbox
+        photos={ALL_PHOTOS}
+        index={openIndex}
+        onClose={() => setOpenIndex(null)}
+        onNavigate={setOpenIndex}
+      />
     </>
   )
 }
