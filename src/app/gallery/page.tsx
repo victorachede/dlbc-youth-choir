@@ -20,6 +20,7 @@ const PHOTOS = [
   { src: '/photos/crowd-stadium.jpg', caption: 'The Congregation', aspect: '3/2' },
   { src: '/photos/flute-duet.jpg', caption: 'Flute Duet', aspect: '3/4' },
   { src: '/photos/duet-mics.jpg', caption: 'Harmony', aspect: '3/2' },
+  { src: '/photos/blue-choir-formation.jpg', caption: 'State Combine Service', aspect: '3/2' },
   { src: '/photos/keyboard-trio-tent.jpg', caption: 'Sound Check', aspect: '3/2' },
   { src: '/photos/speaker-lineup.jpg', caption: 'Addressing the Choir', aspect: '3/2' },
   { src: '/photos/choir-lineup-boys.jpg', caption: 'Standing in Order', aspect: '3/2' },
