@@ -15,7 +15,9 @@ const PHOTOS = [
   { label: 'Easter Special', aspect: '1/1' },
   { label: 'Anniversary Concert', aspect: '4/5' },
   { label: 'Fellowship Evening', aspect: '1/1' },
-  { label: 'Sunday Service', aspect: '4/5' },
+  { label: 'Prayer Retreat', aspect: '4/5' },
+  { label: 'Community Outreach', aspect: '1/1' },
+  { label: 'Watch Night Service', aspect: '4/5' },
 ]
 
 const HERO_PHOTOS = PHOTOS.slice(0, 5)
@@ -34,19 +36,19 @@ export default function GalleryPage() {
           <div className="max-w-6xl mx-auto relative">
             <div className="grid grid-cols-4 grid-rows-2 gap-3 sm:gap-4 h-[60vh] sm:h-[65vh]">
               <Reveal className="col-span-2 row-span-2">
-                <ImagePlaceholder label={HERO_PHOTOS[0].label} className="rounded-sm h-full" />
+                <ImagePlaceholder label={HERO_PHOTOS[0].label} index={0} className="rounded-sm h-full" />
               </Reveal>
               <Reveal delay={0.05} className="col-span-1 row-span-1">
-                <ImagePlaceholder label={HERO_PHOTOS[1].label} className="rounded-sm h-full" />
+                <ImagePlaceholder label={HERO_PHOTOS[1].label} index={1} className="rounded-sm h-full" />
               </Reveal>
               <Reveal delay={0.1} className="col-span-1 row-span-1">
-                <ImagePlaceholder label={HERO_PHOTOS[2].label} className="rounded-sm h-full" />
+                <ImagePlaceholder label={HERO_PHOTOS[2].label} index={2} className="rounded-sm h-full" />
               </Reveal>
               <Reveal delay={0.15} className="col-span-1 row-span-1">
-                <ImagePlaceholder label={HERO_PHOTOS[3].label} className="rounded-sm h-full" />
+                <ImagePlaceholder label={HERO_PHOTOS[3].label} index={3} className="rounded-sm h-full" />
               </Reveal>
               <Reveal delay={0.2} className="col-span-1 row-span-1">
-                <ImagePlaceholder label={HERO_PHOTOS[4].label} className="rounded-sm h-full" />
+                <ImagePlaceholder label={HERO_PHOTOS[4].label} index={4} className="rounded-sm h-full" />
               </Reveal>
             </div>
 
@@ -69,7 +71,7 @@ export default function GalleryPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
             {rest.map((photo, i) => (
               <Reveal key={`${photo.label}-${i}`} delay={(i % 3) * 0.06}>
-                <ImagePlaceholder label={photo.label} aspect={photo.aspect} className="rounded-sm" />
+                <ImagePlaceholder label={photo.label} aspect={photo.aspect} index={i + 5} className="rounded-sm" />
               </Reveal>
             ))}
           </div>
