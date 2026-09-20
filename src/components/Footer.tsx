@@ -1,14 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { HugeiconsIcon } from '@hugeicons/react'
-import {
-  YoutubeIcon,
-  DiscordIcon,
-  SpotifyIcon,
-  AppleMusicIcon,
-  Facebook01Icon,
-  InstagramIcon,
-} from '@hugeicons/core-free-icons'
+import { SiYoutube, SiDiscord, SiSpotify, SiApplemusic, SiFacebook, SiInstagram } from 'react-icons/si'
 
 const LINKS = [
   { href: '/about', label: 'About' },
@@ -21,12 +13,12 @@ const LINKS = [
 // TODO: replace href: '#' with real profile/channel URLs as they become available.
 // Icons are wired up and ready — only the links themselves are placeholder.
 const SOCIALS = [
-  { label: 'YouTube', href: '#', icon: YoutubeIcon },
-  { label: 'Discord', href: '#', icon: DiscordIcon },
-  { label: 'Spotify', href: '#', icon: SpotifyIcon },
-  { label: 'Apple Music', href: '#', icon: AppleMusicIcon },
-  { label: 'Facebook', href: '#', icon: Facebook01Icon },
-  { label: 'Instagram', href: '#', icon: InstagramIcon },
+  { label: 'YouTube', href: '#', Icon: SiYoutube },
+  { label: 'Discord', href: '#', Icon: SiDiscord },
+  { label: 'Spotify', href: '#', Icon: SiSpotify },
+  { label: 'Apple Music', href: '#', Icon: SiApplemusic },
+  { label: 'Facebook', href: '#', Icon: SiFacebook },
+  { label: 'Instagram', href: '#', Icon: SiInstagram },
 ]
 
 export default function Footer() {
@@ -51,7 +43,7 @@ export default function Footer() {
             ))}
           </ul>
           <ul className="flex gap-4">
-            {SOCIALS.map(({ label, href, icon }) => (
+            {SOCIALS.map(({ label, href, Icon }) => (
               <li key={label}>
                 <a
                   href={href}
@@ -59,7 +51,7 @@ export default function Footer() {
                   title={label}
                   className="w-8 h-8 flex items-center justify-center rounded-full border border-border text-ink-dim hover:text-blue hover:border-blue-dim transition-colors"
                 >
-                  <HugeiconsIcon icon={icon} size={15} strokeWidth={1.5} color="currentColor" />
+                  <Icon size={15} />
                 </a>
               </li>
             ))}

@@ -54,11 +54,6 @@ export default function HomePage() {
               </div>
             </Reveal>
           </div>
-
-          <div className="absolute bottom-8 flex flex-col items-center gap-2 text-ink-dim text-[10px] tracking-[0.2em] uppercase">
-            <span>Scroll</span>
-            <div className="w-px h-8 bg-gradient-to-b from-blue to-transparent" />
-          </div>
         </section>
 
         {/* ── ABOUT TEASER ── */}
