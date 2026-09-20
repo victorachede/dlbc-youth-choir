@@ -2,18 +2,17 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
-import ImagePlaceholder from '@/components/ImagePlaceholder'
+import PhotoTile from '@/components/PhotoTile'
 import HeroMedia, { type HeroSlide } from '@/components/HeroMedia'
 
-// TODO: drop real footage/photos into /public/hero and fill this in — the
-// hero plays the video once, then crossfades through the images on a loop.
-// Example once assets exist:
-// const HERO_SLIDES: HeroSlide[] = [
-//   { type: 'video', src: '/hero/choir-live.mp4' },
-//   { type: 'image', src: '/hero/photo-1.jpg', durationMs: 5000 },
-//   { type: 'image', src: '/hero/photo-2.jpg', durationMs: 5000 },
-// ]
-const HERO_SLIDES: HeroSlide[] = []
+// TODO: drop real footage into /public/hero once a video exists — the hero
+// would then play it once before crossfading into this photo loop.
+const HERO_SLIDES: HeroSlide[] = [
+  { type: 'image', src: '/photos/crowd-stadium.jpg', durationMs: 5000 },
+  { type: 'image', src: '/photos/string-orchestra.jpg', durationMs: 5000 },
+  { type: 'image', src: '/photos/choir-group-solo.jpg', durationMs: 5000 },
+  { type: 'image', src: '/photos/choir-lineup-boys.jpg', durationMs: 5000 },
+]
 
 export default function HomePage() {
   return (
@@ -98,7 +97,13 @@ export default function HomePage() {
               </Reveal>
             </div>
             <Reveal direction="right">
-              <ImagePlaceholder label="Choir Photo" aspect="4/5" />
+              <PhotoTile
+                src="/photos/duet-mics.jpg"
+                alt="Choir members singing"
+                aspect="4/5"
+                className="rounded-sm"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
             </Reveal>
           </div>
         </section>

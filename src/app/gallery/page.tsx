@@ -1,30 +1,31 @@
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
-import ImagePlaceholder from '@/components/ImagePlaceholder'
+import PhotoTile from '@/components/PhotoTile'
 
-// TODO: replace each placeholder with a real photo once available.
-// Aspect varies slightly per item to keep the grid from feeling too uniform —
-// keep that variation when swapping in real photos for the best visual result.
-const PHOTOS = [
-  { label: 'Sunday Service', aspect: '4/5' },
-  { label: 'Youth Convention', aspect: '1/1' },
-  { label: 'Rehearsal Night', aspect: '4/5' },
-  { label: 'Christmas Concert', aspect: '1/1' },
-  { label: 'Choir Retreat', aspect: '4/5' },
-  { label: 'Easter Special', aspect: '1/1' },
-  { label: 'Anniversary Concert', aspect: '4/5' },
-  { label: 'Fellowship Evening', aspect: '1/1' },
-  { label: 'Prayer Retreat', aspect: '4/5' },
-  { label: 'Community Outreach', aspect: '1/1' },
-  { label: 'Watch Night Service', aspect: '4/5' },
+const HERO_PHOTOS = [
+  { src: '/photos/string-orchestra.jpg', caption: 'Strings — Combine Service' },
+  { src: '/photos/choir-group-solo.jpg', caption: 'Full Choir in Worship' },
+  { src: '/photos/lineup-formal.jpg', caption: 'Robed & Ready' },
+  { src: '/photos/soloist-mic.jpg', caption: 'A Lifted Voice' },
+  { src: '/photos/sax-solo.jpg', caption: 'Saxophone Solo' },
 ]
 
-const HERO_PHOTOS = PHOTOS.slice(0, 5)
+const PHOTOS = [
+  { src: '/photos/preacher-mic.jpg', caption: 'The Word Preached', aspect: '3/2' },
+  { src: '/photos/keyboard-trio.jpg', caption: 'Keys Section', aspect: '3/2' },
+  { src: '/photos/woodwind-group.jpg', caption: 'Woodwinds', aspect: '3/2' },
+  { src: '/photos/cameraman.jpg', caption: 'Behind the Scenes', aspect: '3/2' },
+  { src: '/photos/brass-trio.jpg', caption: 'Brass Section', aspect: '3/2' },
+  { src: '/photos/crowd-stadium.jpg', caption: 'The Congregation', aspect: '3/2' },
+  { src: '/photos/flute-duet.jpg', caption: 'Flute Duet', aspect: '3/4' },
+  { src: '/photos/duet-mics.jpg', caption: 'Harmony', aspect: '3/2' },
+  { src: '/photos/keyboard-trio-tent.jpg', caption: 'Sound Check', aspect: '3/2' },
+  { src: '/photos/speaker-lineup.jpg', caption: 'Addressing the Choir', aspect: '3/2' },
+  { src: '/photos/choir-lineup-boys.jpg', caption: 'Standing in Order', aspect: '3/2' },
+]
 
 export default function GalleryPage() {
-  const rest = PHOTOS.slice(5)
-
   return (
     <>
       <Nav />
@@ -36,19 +37,26 @@ export default function GalleryPage() {
           <div className="max-w-6xl mx-auto relative">
             <div className="grid grid-cols-4 grid-rows-2 gap-3 sm:gap-4 h-[60vh] sm:h-[65vh]">
               <Reveal className="col-span-2 row-span-2">
-                <ImagePlaceholder label={HERO_PHOTOS[0].label} index={0} className="rounded-sm h-full" />
+                <PhotoTile
+                  src={HERO_PHOTOS[0].src}
+                  alt={HERO_PHOTOS[0].caption}
+                  caption={HERO_PHOTOS[0].caption}
+                  className="rounded-sm h-full"
+                  sizes="50vw"
+                  priority
+                />
               </Reveal>
               <Reveal delay={0.05} className="col-span-1 row-span-1">
-                <ImagePlaceholder label={HERO_PHOTOS[1].label} index={1} className="rounded-sm h-full" />
+                <PhotoTile src={HERO_PHOTOS[1].src} alt={HERO_PHOTOS[1].caption} caption={HERO_PHOTOS[1].caption} className="rounded-sm h-full" sizes="25vw" priority />
               </Reveal>
               <Reveal delay={0.1} className="col-span-1 row-span-1">
-                <ImagePlaceholder label={HERO_PHOTOS[2].label} index={2} className="rounded-sm h-full" />
+                <PhotoTile src={HERO_PHOTOS[2].src} alt={HERO_PHOTOS[2].caption} caption={HERO_PHOTOS[2].caption} className="rounded-sm h-full" sizes="25vw" priority />
               </Reveal>
               <Reveal delay={0.15} className="col-span-1 row-span-1">
-                <ImagePlaceholder label={HERO_PHOTOS[3].label} index={3} className="rounded-sm h-full" />
+                <PhotoTile src={HERO_PHOTOS[3].src} alt={HERO_PHOTOS[3].caption} caption={HERO_PHOTOS[3].caption} className="rounded-sm h-full" sizes="25vw" />
               </Reveal>
               <Reveal delay={0.2} className="col-span-1 row-span-1">
-                <ImagePlaceholder label={HERO_PHOTOS[4].label} index={4} className="rounded-sm h-full" />
+                <PhotoTile src={HERO_PHOTOS[4].src} alt={HERO_PHOTOS[4].caption} caption={HERO_PHOTOS[4].caption} className="rounded-sm h-full" sizes="25vw" />
               </Reveal>
             </div>
 
@@ -69,9 +77,15 @@ export default function GalleryPage() {
         <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-24 pt-16">
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-            {rest.map((photo, i) => (
-              <Reveal key={`${photo.label}-${i}`} delay={(i % 3) * 0.06}>
-                <ImagePlaceholder label={photo.label} aspect={photo.aspect} index={i + 5} className="rounded-sm" />
+            {PHOTOS.map((photo, i) => (
+              <Reveal key={photo.src} delay={(i % 3) * 0.06}>
+                <PhotoTile
+                  src={photo.src}
+                  alt={photo.caption}
+                  caption={photo.caption}
+                  aspect={photo.aspect}
+                  className="rounded-sm"
+                />
               </Reveal>
             ))}
           </div>

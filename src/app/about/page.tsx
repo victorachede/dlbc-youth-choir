@@ -1,7 +1,7 @@
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
-import ImagePlaceholder from '@/components/ImagePlaceholder'
+import PhotoTile from '@/components/PhotoTile'
 
 const VALUES = [
   {
@@ -73,7 +73,13 @@ export default function AboutPage() {
                   than just "text left, image right." */}
               <div className="relative">
                 <div className="absolute -top-4 -right-4 bottom-4 left-4 border border-blue/25 rounded-sm -z-10" aria-hidden />
-                <ImagePlaceholder label="Choir Photo" aspect="4/5" />
+                <PhotoTile
+                  src="/photos/lineup-formal.jpg"
+                  alt="Choir robed and ready"
+                  aspect="4/5"
+                  className="rounded-sm"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                />
               </div>
             </Reveal>
           </div>
