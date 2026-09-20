@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import JoinForm from './JoinForm'
 
 export const metadata: Metadata = {
@@ -8,5 +9,9 @@ export const metadata: Metadata = {
 }
 
 export default function JoinPage() {
-  return <JoinForm />
+  return (
+    <Suspense>
+      <JoinForm />
+    </Suspense>
+  )
 }

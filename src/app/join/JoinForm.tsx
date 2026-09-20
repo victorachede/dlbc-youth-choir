@@ -1,21 +1,32 @@
 'use client'
 
 import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
 import { Check, Loader2 } from 'lucide-react'
 
 const VOICE_PARTS = ['Soprano', 'Alto', 'Tenor', 'Bass', 'Not sure yet']
+const BRANCHES = ['Makurdi', 'Guma', 'Konshisha', 'Wannune', 'Oju', 'Otukpo']
 
 export default function JoinForm() {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', voicePart: '', experience: '', message: '' })
+  const searchParams = useSearchParams()
+  const branchFromUrl = searchParams.get('branch')
+  const initialBranch = branchFromUrl && (BRANCHES as string[]).includes(branchFromUrl) ? branchFromUrl : ''
+
+  const [form, setForm] = useState({ name: '', phone: '', email: '', branch: initialBranch, voicePart: '', experience: '', message: '' })
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [voicePartError, setVoicePartError] = useState(false)
+  const [branchError, setBranchError] = useState(false)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!form.branch) {
+      setBranchError(true)
+      return
+    }
     if (!form.voicePart) {
       setVoicePartError(true)
       return
@@ -103,6 +114,34 @@ export default function JoinForm() {
                     className="w-full bg-surface border border-border rounded-sm px-4 py-3 text-[14px] text-ink outline-none focus:border-blue transition-colors"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-[12px] tracking-wide text-ink-muted mb-2">Branch</label>
+                <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Branch">
+                  {BRANCHES.map((b) => {
+                    const active = form.branch === b
+                    return (
+                      <button
+                        key={b}
+                        type="button"
+                        role="radio"
+                        aria-checked={active}
+                        onClick={() => { setForm({ ...form, branch: b }); setBranchError(false) }}
+                        className={`px-4 py-2.5 rounded-full text-[13px] border transition-colors ${
+                          active
+                            ? 'bg-blue border-blue text-white'
+                            : 'bg-surface border-border text-ink-muted hover:border-blue-dim'
+                        }`}
+                      >
+                        {b}
+                      </button>
+                    )
+                  })}
+                </div>
+                {branchError && (
+                  <p className="text-[12px] text-red mt-2">Please select a branch.</p>
+                )}
               </div>
 
               <div>
