@@ -18,29 +18,56 @@ const PHOTOS = [
   { label: 'Sunday Service', aspect: '4/5' },
 ]
 
+const HERO_PHOTOS = PHOTOS.slice(0, 5)
+
 export default function GalleryPage() {
+  const rest = PHOTOS.slice(5)
+
   return (
     <>
       <Nav />
-      <main className="flex-1 pt-32 sm:pt-40">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-24">
+      <main className="flex-1">
 
-          <Reveal>
-            <p className="font-display text-[11px] tracking-[0.25em] uppercase text-blue mb-4 text-center">Moments</p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-ink mb-4 text-center">
-              Gallery
-            </h1>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-ink-muted text-[15px] leading-relaxed text-center max-w-md mx-auto mb-16">
-              Glimpses of worship, fellowship, and life together as a choir family.
-            </p>
-          </Reveal>
+        {/* ── HERO — the photos themselves are the header, a title floats
+            over a mosaic instead of introducing content below it. ── */}
+        <section className="pt-24 pb-3 px-3 sm:px-4">
+          <div className="max-w-6xl mx-auto relative">
+            <div className="grid grid-cols-4 grid-rows-2 gap-3 sm:gap-4 h-[60vh] sm:h-[65vh]">
+              <Reveal className="col-span-2 row-span-2">
+                <ImagePlaceholder label={HERO_PHOTOS[0].label} className="rounded-sm h-full" />
+              </Reveal>
+              <Reveal delay={0.05} className="col-span-1 row-span-1">
+                <ImagePlaceholder label={HERO_PHOTOS[1].label} className="rounded-sm h-full" />
+              </Reveal>
+              <Reveal delay={0.1} className="col-span-1 row-span-1">
+                <ImagePlaceholder label={HERO_PHOTOS[2].label} className="rounded-sm h-full" />
+              </Reveal>
+              <Reveal delay={0.15} className="col-span-1 row-span-1">
+                <ImagePlaceholder label={HERO_PHOTOS[3].label} className="rounded-sm h-full" />
+              </Reveal>
+              <Reveal delay={0.2} className="col-span-1 row-span-1">
+                <ImagePlaceholder label={HERO_PHOTOS[4].label} className="rounded-sm h-full" />
+              </Reveal>
+            </div>
+
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="text-center px-6 py-8 rounded-sm bg-white/70 backdrop-blur-sm">
+                <p className="font-display text-[11px] tracking-[0.25em] uppercase text-blue mb-3">Moments</p>
+                <h1 className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-ink mb-3">
+                  Gallery
+                </h1>
+                <p className="text-ink-muted text-[15px] max-w-sm mx-auto">
+                  Glimpses of worship, fellowship, and life together as a choir family.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-24 pt-16">
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-            {PHOTOS.map((photo, i) => (
+            {rest.map((photo, i) => (
               <Reveal key={`${photo.label}-${i}`} delay={(i % 3) * 0.06}>
                 <ImagePlaceholder label={photo.label} aspect={photo.aspect} className="rounded-sm" />
               </Reveal>

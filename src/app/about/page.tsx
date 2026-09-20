@@ -40,37 +40,46 @@ export default function AboutPage() {
   return (
     <>
       <Nav />
-      <main className="flex-1 pt-32 sm:pt-40">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 pb-24">
+      <main className="flex-1">
 
-          {/* ── INTRO ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
+        {/* ── HERO — editorial split, photo framed off-axis ── */}
+        <section className="pt-32 sm:pt-40 pb-20 sm:pb-28 bg-surface border-b border-border overflow-hidden">
+          <div className="max-w-5xl mx-auto px-6 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <Reveal>
                 <p className="font-display text-[11px] tracking-[0.25em] uppercase text-blue mb-4">Who We Are</p>
               </Reveal>
               <Reveal delay={0.05}>
-                <h1 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-ink mb-8 leading-tight">
+                <h1 className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-ink mb-8 leading-tight">
                   More Than Music.<br /><em className="font-accent italic font-light text-blue">A Ministry.</em>
                 </h1>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="text-ink-muted text-[15px] leading-[1.9] mb-5">
+                <p className="text-ink-muted text-[15px] leading-[1.9] mb-5 max-w-md">
                   The DLBC Makurdi Youth Choir is a Spirit-led worship ministry born out of a deep hunger
                   for authentic, heaven-touching praise. We are young voices — raw, refined, and resolute —
                   committed to excellence in worship and the glory of God through every note we sing.
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
-                <p className="text-ink-muted text-[15px] leading-[1.9]">
+                <p className="text-ink-muted text-[15px] leading-[1.9] max-w-md">
                   We don&apos;t perform. We pray with our voices. Every rehearsal, every Sunday, every stage is an altar.
                 </p>
               </Reveal>
             </div>
             <Reveal direction="right">
-              <ImagePlaceholder label="Choir Photo" aspect="4/5" />
+              {/* Offset frame behind the photo — the one purely decorative touch
+                  that makes this read as a considered editorial spread rather
+                  than just "text left, image right." */}
+              <div className="relative">
+                <div className="absolute -top-4 -right-4 bottom-4 left-4 border border-blue/25 rounded-sm -z-10" aria-hidden />
+                <ImagePlaceholder label="Choir Photo" aspect="4/5" />
+              </div>
             </Reveal>
           </div>
+        </section>
+
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 pb-24 pt-24">
 
           {/* ── STATS ── */}
           <Reveal>

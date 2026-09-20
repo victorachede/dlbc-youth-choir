@@ -16,28 +16,57 @@ const TRACKS = [
   { title: 'Holy, Holy, Holy', meta: 'Anniversary Concert — 2024', duration: '5:30' },
 ]
 
+// Deterministic per-bar heights and delays (no Math.random — this renders
+// once on the server, a fresh random set on every hydration would mismatch).
+const WAVEFORM_BARS = [40, 70, 45, 90, 55, 100, 60, 80, 35, 95, 50, 75, 42, 88, 58, 65, 48, 92, 38, 72]
+
 export default function MusicPage() {
   const [playing, setPlaying] = useState<number | null>(null)
+  const featured = TRACKS[0]
 
   return (
     <>
       <Nav />
-      <main className="flex-1 pt-32 sm:pt-40">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 pb-24">
+      <main className="flex-1">
 
-          <Reveal>
-            <p className="font-display text-[11px] tracking-[0.25em] uppercase text-blue mb-4 text-center">Our Sound</p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-ink mb-4 text-center">
-              Music
-            </h1>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-ink-muted text-[15px] leading-relaxed text-center max-w-md mx-auto mb-16">
-              Worship recorded live, the way it was sung — unedited hearts in the room with us.
-            </p>
-          </Reveal>
+        {/* ── HERO — solid brand block + waveform motif, the featured track ── */}
+        <section className="pt-32 sm:pt-40 pb-16 sm:pb-20 bg-blue relative overflow-hidden">
+          <div className="max-w-5xl mx-auto px-6 sm:px-10 text-center relative z-10">
+            <Reveal>
+              <p className="font-display text-[11px] tracking-[0.25em] uppercase text-white/60 mb-4">Our Sound</p>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h1 className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white mb-4">
+                Music
+              </h1>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-white/70 text-[15px] leading-relaxed max-w-md mx-auto mb-10">
+                Worship recorded live, the way it was sung — unedited hearts in the room with us.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <div className="flex items-end justify-center gap-1 h-16 mb-10" aria-hidden>
+                {WAVEFORM_BARS.map((h, i) => (
+                  <span
+                    key={i}
+                    className="w-1 sm:w-1.5 rounded-full bg-white/30 animate-pulse"
+                    style={{ height: `${h}%`, animationDelay: `${i * 0.08}s`, animationDuration: '1.6s' }}
+                  />
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <p className="text-white/50 text-[11px] tracking-[0.2em] uppercase mb-2">Now Featured</p>
+              <p className="font-accent italic font-light text-2xl sm:text-3xl text-white">{featured.title}</p>
+              <p className="text-white/60 text-[13px] mt-1">{featured.meta}</p>
+            </Reveal>
+          </div>
+        </section>
+
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 pb-24 pt-16">
 
           <div className="flex flex-col gap-2">
             {TRACKS.map((track, i) => (
