@@ -12,6 +12,7 @@ const LINKS = [
   { href: '/music', label: 'Music' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/events', label: 'Events' },
+  { href: '/live', label: 'Live' },
 ]
 
 export default function Nav() {

@@ -7,6 +7,7 @@ const LINKS = [
   { href: '/music', label: 'Music' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/events', label: 'Events' },
+  { href: '/materials', label: 'Materials' },
   { href: '/join', label: 'Join' },
 ]
 
