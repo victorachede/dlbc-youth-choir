@@ -1,7 +1,14 @@
+import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
 import PhotoTile from '@/components/PhotoTile'
+
+export const metadata: Metadata = {
+  title: 'About Us',
+  description:
+    'The story, values, and leadership behind the DLBC Youth Choir Makurdi — a Spirit-led worship ministry, not just a music group.',
+}
 
 const VALUES = [
   {

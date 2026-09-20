@@ -1,6 +1,13 @@
+import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
+
+export const metadata: Metadata = {
+  title: 'Events',
+  description:
+    'Upcoming services, rehearsals, and concerts from the DLBC Youth Choir Makurdi — see what\'s next and where to be.',
+}
 
 const EVENTS = [
   { day: '18', month: 'May', name: 'Sunday Worship Service', location: 'DLBC Makurdi Main Auditorium', time: '8:00 AM' },
