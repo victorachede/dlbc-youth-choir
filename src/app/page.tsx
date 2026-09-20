@@ -8,10 +8,20 @@ import HeroMedia, { type HeroSlide } from '@/components/HeroMedia'
 // TODO: drop real footage into /public/hero once a video exists — the hero
 // would then play it once before crossfading into this photo loop.
 const HERO_SLIDES: HeroSlide[] = [
+  { type: 'image', src: '/photos/choir-doorway-wide.jpg', durationMs: 5000 },
+  { type: 'image', src: '/photos/stage-group-photo.jpg', durationMs: 5000 },
   { type: 'image', src: '/photos/crowd-stadium.jpg', durationMs: 5000 },
+  { type: 'image', src: '/photos/group-photo-outdoor-colorful.jpg', durationMs: 5000 },
+  { type: 'image', src: '/photos/stage-group-photo-2.jpg', durationMs: 5000 },
   { type: 'image', src: '/photos/string-orchestra.jpg', durationMs: 5000 },
-  { type: 'image', src: '/photos/choir-group-solo.jpg', durationMs: 5000 },
-  { type: 'image', src: '/photos/choir-lineup-boys.jpg', durationMs: 5000 },
+]
+
+const MOMENTS = [
+  { src: '/photos/group-photo-outdoor-colorful.jpg', caption: 'Family, Not Just Members', aspect: '4/3' },
+  { src: '/photos/small-group-meeting.jpg', caption: 'Discipleship Circles', aspect: '4/3' },
+  { src: '/photos/two-women-wrappers.jpg', caption: 'Sisterhood', aspect: '3/4' },
+  { src: '/photos/trumpet-sax-duo.jpg', caption: 'The Band', aspect: '4/3' },
+  { src: '/photos/two-women-orange.jpg', caption: 'Friends for Life', aspect: '3/4' },
 ]
 
 export default function HomePage() {
@@ -49,6 +59,39 @@ export default function HomePage() {
                 </Link>
                 <Link href="/join" className="border border-ink/25 text-ink text-[13px] tracking-wide px-6 py-3 rounded-sm hover:bg-ink/5 transition-colors">
                   Join the Choir
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ── MOMENTS TEASER ── */}
+        <section className="py-24 sm:py-32 px-6 bg-surface border-t border-border">
+          <div className="max-w-5xl mx-auto">
+            <Reveal>
+              <p className="font-display text-[11px] tracking-[0.25em] uppercase text-blue mb-4 text-center">Moments</p>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="font-display font-semibold text-3xl sm:text-4xl text-ink mb-14 text-center">Life at a Glance</h2>
+            </Reveal>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4">
+              {MOMENTS.map((photo, i) => (
+                <Reveal key={photo.src} delay={i * 0.06}>
+                  <PhotoTile
+                    src={photo.src}
+                    alt={photo.caption}
+                    caption={photo.caption}
+                    aspect={photo.aspect}
+                    className="rounded-sm"
+                    sizes="(min-width: 640px) 20vw, 50vw"
+                  />
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={0.3}>
+              <div className="text-center mt-12">
+                <Link href="/gallery" className="text-[13px] text-blue border-b border-blue/30 hover:border-blue transition-colors">
+                  View full gallery →
                 </Link>
               </div>
             </Reveal>
@@ -105,6 +148,49 @@ export default function HomePage() {
                 sizes="(min-width: 1024px) 50vw, 100vw"
               />
             </Reveal>
+          </div>
+        </section>
+
+        {/* ── FELLOWSHIP ── */}
+        <section className="py-24 sm:py-32 px-6 border-t border-border">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <Reveal>
+              <PhotoTile
+                src="/photos/small-group-meeting.jpg"
+                alt="Choir members in a discipleship circle"
+                aspect="4/3"
+                className="rounded-sm"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
+            </Reveal>
+            <div>
+              <Reveal>
+                <p className="font-display text-[11px] tracking-[0.25em] uppercase text-blue mb-4">Life Together</p>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h2 className="font-display font-semibold text-3xl sm:text-4xl text-ink mb-6 leading-tight">
+                  Not Just Rehearsals.<br /><em className="font-accent italic font-light text-blue">Family.</em>
+                </h2>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="text-ink-muted text-[15px] leading-[1.9] mb-4">
+                  Beyond the stage, we do life together — small discipleship circles, fellowship evenings,
+                  and quiet check-ins that have nothing to do with music. The bond between us is the reason
+                  the sound comes out the way it does.
+                </p>
+              </Reveal>
+              <Reveal delay={0.15}>
+                <p className="text-ink-muted text-[15px] leading-[1.9]">
+                  If you join, you&apos;re not just joining a choir. You&apos;re joining people who will pray
+                  for you, show up for you, and grow with you.
+                </p>
+              </Reveal>
+              <Reveal delay={0.2}>
+                <Link href="/join" className="inline-block mt-8 text-[13px] text-blue border-b border-blue/30 hover:border-blue transition-colors">
+                  See how to join →
+                </Link>
+              </Reveal>
+            </div>
           </div>
         </section>
 
