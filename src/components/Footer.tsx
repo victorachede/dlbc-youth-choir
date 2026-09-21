@@ -35,7 +35,7 @@ export default function Footer() {
               <p className="text-[13px] text-ink-dim">Makurdi, Benue State, Nigeria</p>
             </div>
           </div>
-          <ul className="flex gap-6">
+          <ul className="flex flex-wrap justify-center sm:justify-start gap-x-6 gap-y-2">
             {LINKS.map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="text-[13px] text-ink-muted hover:text-blue transition-colors">
